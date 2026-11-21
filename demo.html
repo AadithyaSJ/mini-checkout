@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Checkout - Video Walkthrough & Presentation</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #10b981;
+      --accent-hover: #059669;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .video-wrapper {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .presentation-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    .slide-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (max-width: 800px) {
+      .slide-card { grid-template-columns: 1fr; }
+    }
+    .slide-content h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+    .slide-meta {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .slide-content p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .slide-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .slide-image-wrapper {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #0f172a;
+    }
+    .slide-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .slide-image-wrapper img:hover {
+      transform: scale(1.02);
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">E2E Video Walkthrough & Presentation</span>
+      <h1>Mini Checkout and Browser Test Suite</h1>
+      <p class="subtitle">Complete technical demonstration of architecture, component hierarchy, test automation, and evaluation benchmarks.</p>
+    </header>
+
+    <!-- Recorded Video Player -->
+    <div class="video-wrapper">
+      <video controls poster="screenshots/tc01-successful-checkout.png" preload="metadata">
+        <source src="videos/mini-checkout-demo.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Slide Presentation with Synchronized Screenshots -->
+    <div class="presentation-grid">
+      <!-- Slide 1 -->
+      <article class="slide-card">
+        <div class="slide-content">
+          <div class="slide-meta">Slide 01 • Architecture & Catalogue</div>
+          <h2>Product Catalogue & Fixed Pricing</h2>
+          <p>Features fixed-price synthetic items (P001 Wireless Headphones @ ₹1,499.00 and P002 Smart Watch @ ₹2,499.00). All product definitions are immutable, preventing user input tampering.</p>
+          <div class="slide-tags">
+            <span class="tag">HTML5 / CSS3</span>
+            <span class="tag">Catalog Engine</span>
+            <span class="tag">Zero Drift Math</span>
+          </div>
+        </div>
+        <div class="slide-image-wrapper">
+          <img src="screenshots/tc03-exact-totals.png" alt="Product Catalogue & Pricing">
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="slide-card">
+        <div class="slide-content">
+          <div class="slide-meta">Slide 02 • Test Case MT01</div>
+          <h2>Empty Cart Checkout Prevention</h2>
+          <p>Blocks empty-cart submissions with an inline alert banner. Guarantees no order reference is generated and the Place Order button remains active for user recovery.</p>
+          <div class="slide-tags">
+            <span class="tag">Boundary Validation</span>
+            <span class="tag">State Isolation</span>
+            <span class="tag">Manual Test MT01</span>
+          </div>
+        </div>
+        <div class="slide-image-wrapper">
+          <img src="screenshots/mt01-empty-cart-blocked.png" alt="Empty Cart Error">
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="slide-card">
+        <div class="slide-content">
+          <div class="slide-meta">Slide 03 • Test Case TC02</div>
+          <h2>Required Field Validation & State Retention</h2>
+          <p>Trims whitespace, rejects blank names, associates errors with aria-invalid="true" and aria-describedby, while preserving active cart contents for seamless error recovery.</p>
+          <div class="slide-tags">
+            <span class="tag">ARIA Standards</span>
+            <span class="tag">Input Recovery</span>
+            <span class="tag">Automated TC02</span>
+          </div>
+        </div>
+        <div class="slide-image-wrapper">
+          <img src="screenshots/tc02-missing-field-validation.png" alt="Validation Error">
+        </div>
+      </article>
+
+      <!-- Slide 4 -->
+      <article class="slide-card">
+        <div class="slide-content">
+          <div class="slide-meta">Slide 04 • Test Case TC03</div>
+          <h2>Integer Paise Financial Math</h2>
+          <p>Eliminates IEEE-754 floating-point drift by computing all subtotals and grand totals in integer paise internally before formatting in standard Indian Rupee (INR).</p>
+          <div class="slide-tags">
+            <span class="tag">Integer Math</span>
+            <span class="tag">INR Currency Format</span>
+            <span class="tag">Automated TC03</span>
+          </div>
+        </div>
+        <div class="slide-image-wrapper">
+          <img src="screenshots/tc03-exact-totals.png" alt="Calculations & Totals">
+        </div>
+      </article>
+
+      <!-- Slide 5 -->
+      <article class="slide-card">
+        <div class="slide-content">
+          <div class="slide-meta">Slide 05 • Test Case TC01 & MT02</div>
+          <h2>Synchronous Concurrency Lock & Order Confirmation</h2>
+          <p>Synchronous boolean lock prevents rapid double-clicks (< 10ms) from dispatching duplicate orders. Permanently disables submission controls and generates a single unique reference code.</p>
+          <div class="slide-tags">
+            <span class="tag">Synchronous Lock</span>
+            <span class="tag">Duplicate Protection</span>
+            <span class="tag">ORD-2026-XXXXXX</span>
+          </div>
+        </div>
+        <div class="slide-image-wrapper">
+          <img src="screenshots/tc01-successful-checkout.png" alt="Order Confirmation">
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Mini Checkout Project • Automated Video Demo & QA Architecture Review</p>
+    </footer>
+  </div>
+</body>
+</html>
