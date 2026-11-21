@@ -1,0 +1,26 @@
+{
+  "name": "mini-checkout",
+  "version": "1.0.0",
+  "description": "Mini Checkout single-page application and automated browser test suite with Playwright",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "playwright test",
+    "test:manual": "node run-manual-tests.js",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "show-report": "playwright show-report"
+  },
+  "keywords": [
+    "checkout",
+    "playwright",
+    "testing",
+    "automation",
+    "qa"
+  ],
+  "author": "Engineering Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}

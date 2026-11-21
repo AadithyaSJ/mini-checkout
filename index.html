@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mini Checkout - Clean, secure and responsive single-page checkout">
+  <title>Mini Checkout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-inner container">
+        <div class="brand">
+          <svg class="brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="brand-name">Mini Checkout</span>
+        </div>
+        <div class="header-badge" id="header-cart-indicator" aria-live="polite">
+          <span class="badge-dot"></span>
+          <span id="header-item-count">0 items</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content" id="main-content">
+      <div class="checkout-grid">
+        <!-- Left Column: Products Catalogue & Active Cart -->
+        <div class="catalog-cart-column">
+          <!-- Product Catalogue -->
+          <section class="section-card catalog-section" aria-labelledby="catalog-heading">
+            <h2 id="catalog-heading" class="section-title">Available Products</h2>
+            <div id="product-list" class="product-grid" data-testid="product-list">
+              <!-- Dynamically rendered or static fallback via app.js -->
+            </div>
+          </section>
+
+          <!-- Shopping Cart -->
+          <section class="section-card cart-section" data-testid="cart-section" aria-labelledby="cart-heading">
+            <div class="section-header-row">
+              <h2 id="cart-heading" class="section-title">Your Cart</h2>
+              <span class="cart-count-badge" id="cart-count-badge">0 items</span>
+            </div>
+            
+            <div id="cart-items-container" class="cart-items-list" data-testid="cart-items-list">
+              <!-- Items rendered by app.js -->
+            </div>
+
+            <!-- Empty Cart Fallback -->
+            <div id="empty-cart-message" class="empty-cart-state" data-testid="empty-cart-message">
+              <svg class="empty-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+              </svg>
+              <p>Your cart is empty. Select products from above to get started.</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column: Checkout Form & Order Summary & Confirmation -->
+        <div class="checkout-summary-column">
+          <!-- Checkout Order Form -->
+          <section class="section-card checkout-card" id="checkout-section" aria-labelledby="checkout-heading">
+            <h2 id="checkout-heading" class="section-title">Order Details</h2>
+
+            <!-- Cart Level Error Alert -->
+            <div id="cart-error" class="alert-error" data-testid="cart-error" role="alert" aria-live="polite" style="display: none;"></div>
+
+            <form id="checkout-form" novalidate>
+              <div class="form-group">
+                <label for="customer-name" class="form-label">
+                  Customer Name <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="customer-name"
+                  name="customerName"
+                  class="form-input"
+                  data-testid="customer-name-input"
+                  placeholder="e.g. Test Customer"
+                  autocomplete="name"
+                  aria-required="true"
+                  aria-describedby="name-error"
+                />
+                <div id="name-error" class="field-error" data-testid="name-error" role="alert" aria-live="polite" style="display: none;"></div>
+              </div>
+
+              <!-- Order Summary Breakdown -->
+              <div class="order-summary" aria-label="Order cost summary">
+                <h3 class="summary-title">Summary</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Subtotal</span>
+                  <span class="summary-value" id="summary-subtotal" data-testid="summary-subtotal">₹0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Estimated Taxes</span>
+                  <span class="summary-value">₹0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Shipping</span>
+                  <span class="summary-value summary-free">Free</span>
+                </div>
+                <div class="summary-divider" role="separator"></div>
+                <div class="summary-row total-row">
+                  <span class="total-label">Total Amount</span>
+                  <span class="total-value" id="order-total" data-testid="order-total">₹0.00</span>
+                </div>
+              </div>
+
+              <!-- Submit Action Button -->
+              <button
+                type="submit"
+                id="place-order-btn"
+                class="btn-primary btn-block"
+                data-testid="place-order-button"
+              >
+                Place Order
+              </button>
+            </form>
+          </section>
+
+          <!-- Order Confirmation Screen (Hidden Initially) -->
+          <section
+            id="order-confirmation"
+            class="section-card confirmation-card"
+            data-testid="order-confirmation"
+            aria-live="polite"
+            style="display: none;"
+          >
+            <div class="confirmation-badge-container">
+              <div class="confirmation-icon-circle" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+            </div>
+
+            <h2 class="confirmation-title">Order Confirmed!</h2>
+            <p class="confirmation-subtitle">Thank you for your order. This is a simulated checkout confirmation.</p>
+
+            <div class="confirmation-details-box">
+              <div class="conf-detail-row">
+                <span class="conf-label">Order Reference:</span>
+                <span class="conf-value reference-code" id="confirmed-order-reference" data-testid="confirmed-order-reference">ORD-2026-XXXXXX</span>
+              </div>
+              <div class="conf-detail-row">
+                <span class="conf-label">Customer Name:</span>
+                <span class="conf-value" id="confirmed-customer-name" data-testid="confirmed-customer-name">-</span>
+              </div>
+              <div class="conf-detail-row">
+                <span class="conf-label">Total Paid:</span>
+                <span class="conf-value bold-total" id="confirmed-order-total" data-testid="confirmed-order-total">₹0.00</span>
+              </div>
+              <div class="conf-detail-row">
+                <span class="conf-label">Status:</span>
+                <span class="badge-status-confirmed">Simulated Success</span>
+              </div>
+            </div>
+
+            <div class="confirmation-footer-note">
+              <small>No real charge was processed. Keep your reference code for your records.</small>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Mini Checkout. Designed for QA Automation & Browser Testing Verification.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
