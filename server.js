@@ -16,7 +16,7 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
-const server = http.createServer((req, res) => {
+const requestListener = (req, res) => {
   // Parse URL to ignore query strings
   const parsedUrl = new URL(req.url, `http://localhost:${PORT}`);
   let pathname = parsedUrl.pathname;
@@ -54,16 +54,23 @@ const server = http.createServer((req, res) => {
     const stream = fs.createReadStream(filePath);
     stream.pipe(res);
   });
-});
+};
 
-server.listen(PORT, () => {
-  console.log(`Mini Checkout server running at http://localhost:${PORT}/`);
-});
+const server = http.createServer(requestListener);
 
-// Graceful shutdown
-process.on('SIGINT', () => {
-  server.close(() => process.exit(0));
-});
-process.on('SIGTERM', () => {
-  server.close(() => process.exit(0));
-});
+// Only listen when executed directly via Node.js CLI
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`Mini Checkout server running at http://localhost:${PORT}/`);
+  });
+
+  // Graceful shutdown
+  process.on('SIGINT', () => {
+    server.close(() => process.exit(0));
+  });
+  process.on('SIGTERM', () => {
+    server.close(() => process.exit(0));
+  });
+}
+
+module.exports = requestListener;
