@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide 2: Test Plan Strategy & Risk Prioritization</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 24px;
+    }
+    .title-pill {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border: 1px solid #3b82f6;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 22px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    .slide-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #64748b;
+    }
+    .content-split {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 36px;
+      margin-top: 24px;
+    }
+    .scope-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .scope-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .scope-box h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .scope-in h3 { color: #10b981; }
+    .scope-out h3 { color: #f87171; }
+    .scope-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .scope-box li {
+      font-size: 15px;
+      color: #cbd5e1;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .risk-column {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .risk-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .risk-row {
+      background: #0f172a;
+      border-left: 5px solid;
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      align-items: center;
+      gap: 16px;
+    }
+    .p1 { border-color: #ef4444; }
+    .p2 { border-color: #f59e0b; }
+    .p3 { border-color: #3b82f6; }
+    .p4 { border-color: #10b981; }
+    .risk-badge {
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .p1 .risk-badge { color: #ef4444; }
+    .p2 .risk-badge { color: #f59e0b; }
+    .p3 .risk-badge { color: #60a5fa; }
+    .p4 .risk-badge { color: #10b981; }
+    .risk-desc {
+      font-size: 15px;
+      color: #cbd5e1;
+    }
+    .risk-desc strong {
+      color: #ffffff;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+      color: #64748b;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <span class="title-pill">Section 02 • Test Plan Strategy</span>
+      <h1>Scope Definition & Risk Prioritization Matrix</h1>
+      <p class="subtitle">Systematic Risk Tiers & Quality Boundaries Documented in docs/TEST_PLAN.md</p>
+    </div>
+    <div class="slide-number">02 / 05</div>
+  </div>
+
+  <div class="content-split">
+    <div class="scope-column">
+      <div class="scope-box scope-in">
+        <h3>✓ In-Scope Verification</h3>
+        <ul>
+          <li>• Product catalog rendering & immutable pricing.</li>
+          <li>• Real-time shopping cart mutations & bounds.</li>
+          <li>• Integer paise line subtotal & grand total math.</li>
+          <li>• Customer name validation & error recovery.</li>
+          <li>• Synchronous double-click duplicate protection.</li>
+          <li>• Unique simulated order reference generation.</li>
+        </ul>
+      </div>
+
+      <div class="scope-box scope-out">
+        <h3>✕ Out-of-Scope Boundaries</h3>
+        <ul>
+          <li>• Real payment gateway processing (Stripe, etc.).</li>
+          <li>• Persistent database storage (Postgres/Mongo).</li>
+          <li>• Backend servers, microservices & webhooks.</li>
+          <li>• User authentication & session cookies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="risk-column">
+      <div class="risk-title">Risk Prioritization Matrix (P1 – P4)</div>
+
+      <div class="risk-row p1">
+        <span class="risk-badge">Priority 1<br><small>Critical Risk</small></span>
+        <div class="risk-desc">
+          <strong>Financial Math & Concurrency Discrepancies</strong><br>
+          Incorrect order totals, duplicate orders via rapid clicks, and submitting invalid orders.
+        </div>
+      </div>
+
+      <div class="risk-row p2">
+        <span class="risk-badge">Priority 2<br><small>High Risk</small></span>
+        <div class="risk-desc">
+          <strong>Validation Integrity & State Retention</strong><br>
+          Missing customer name rejection, cart state preservation during errors, and quantity boundaries.
+        </div>
+      </div>
+
+      <div class="risk-row p3">
+        <span class="risk-badge">Priority 3<br><small>Medium Risk</small></span>
+        <div class="risk-desc">
+          <strong>Interactive Controls & Accuracy</strong><br>
+          Adding/removing products, enforcing quantity floor of 1, and confirmation text consistency.
+        </div>
+      </div>
+
+      <div class="risk-row p4">
+        <span class="risk-badge">Priority 4<br><small>Low Risk</small></span>
+        <div class="risk-desc">
+          <strong>Presentation & Basic Accessibility</strong><br>
+          Responsive layout changes, focus rings, and visual styling harmony across viewport widths.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Test Plan Documentation: <code>docs/TEST_PLAN.md</code></div>
+    <div>Mini Checkout & Browser Test Suite • QA Strategy</div>
+  </div>
+</body>
+</html>

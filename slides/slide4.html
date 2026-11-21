@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide 4: Live Execution & Evidence</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 24px;
+    }
+    .title-pill {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      border: 1px solid #10b981;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 22px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    .slide-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #64748b;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .gallery-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-header {
+      padding: 12px 16px;
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .badge-test {
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .img-box {
+      width: 100%;
+      height: 250px;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .card-footer {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #94a3b8;
+      background: #1e293b;
+      line-height: 1.4;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+      color: #64748b;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <span class="title-pill">Section 04 • Live Test Evidence</span>
+      <h1>Chromium Browser Execution Screenshots</h1>
+      <p class="subtitle">Actual Visual Artifacts Captured from Headless and Headed Automation Runs</p>
+    </div>
+    <div class="slide-number">04 / 05</div>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <div class="card-header">
+        <span class="card-title">TC01: Successful Checkout</span>
+        <span class="badge-test">PASSED</span>
+      </div>
+      <div class="img-box">
+        <img src="../screenshots/tc01-successful-checkout.png" alt="TC01 Evidence">
+      </div>
+      <div class="card-footer">
+        Order reference <code>ORD-2026-XXXXXX</code> displayed, customer name, total ₹5,497.00, Place Order disabled.
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="card-header">
+        <span class="card-title">TC02: Missing Name Validation</span>
+        <span class="badge-test">BLOCKED</span>
+      </div>
+      <div class="img-box">
+        <img src="../screenshots/tc02-missing-field-validation.png" alt="TC02 Validation">
+      </div>
+      <div class="card-footer">
+        Inline alert "Customer name is required" with <code>aria-invalid="true"</code>. Active cart state retained.
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="card-header">
+        <span class="card-title">TC02: Input Recovery Resubmit</span>
+        <span class="badge-test">RECOVERED</span>
+      </div>
+      <div class="img-box">
+        <img src="../screenshots/tc02-recovery-successful.png" alt="TC02 Recovery">
+      </div>
+      <div class="card-footer">
+        Typing "Jane Doe" clears validation error; subsequent submission successfully places simulated order.
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="card-header">
+        <span class="card-title">TC03: Exact Financial Math</span>
+        <span class="badge-test">PASSED</span>
+      </div>
+      <div class="img-box">
+        <img src="../screenshots/tc03-exact-totals.png" alt="TC03 Totals">
+      </div>
+      <div class="card-footer">
+        Line subtotals and grand totals calculated dynamically via integer paise (₹3,998.00 with 1x P001 + 1x P002).
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="card-header">
+        <span class="card-title">MT01: Empty Cart Prevention</span>
+        <span class="badge-test">PASSED</span>
+      </div>
+      <div class="img-box">
+        <img src="../screenshots/mt01-empty-cart-blocked.png" alt="MT01 Empty Cart">
+      </div>
+      <div class="card-footer">
+        Alert banner blocks empty cart checkout; zero order references created; button remains active.
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="card-header">
+        <span class="card-title">MT02: Concurrency Lock</span>
+        <span class="badge-test">PASSED</span>
+      </div>
+      <div class="img-box">
+        <img src="../screenshots/mt02-rapid-click-protection.png" alt="MT02 Concurrency">
+      </div>
+      <div class="card-footer">
+        Synchronous lock eliminates duplicate orders under sub-10ms rapid clicks. Exactly one order confirmed.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Evidence Directory: <code>mini-checkout/screenshots/</code></div>
+    <div>Captured via Playwright Page Screenshot API & Chromium DevTools</div>
+  </div>
+</body>
+</html>

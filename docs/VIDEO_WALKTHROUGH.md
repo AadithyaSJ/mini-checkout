@@ -4,10 +4,14 @@
 
 This document provides the complete video demonstration script, architecture breakdown, test plan alignment, and evaluation analysis for the **Mini Checkout and Browser Test Suite**.
 
-- **Recorded Video File:** [`videos/mini-checkout-demo.webm`](../videos/mini-checkout-demo.webm)
+- **Master Walkthrough MP4 (Video + Full Voiceover):** [`videos/mini-checkout-complete-walkthrough.mp4`](../videos/mini-checkout-complete-walkthrough.mp4)
+  - **Resolution:** 1920x1080 (1080p Full HD)
+  - **Duration:** 3 minutes 09 seconds
+  - **Audio Track:** Full spoken voiceover narration (AAC) explaining architecture, test plan, execution, and evaluation.
+  - **Video Codec:** H.264 / AVC (Compatible with all modern browsers, media players, YouTube, and Drive).
+- **Recorded Screen Interaction Video:** [`videos/mini-checkout-demo.webm`](../videos/mini-checkout-demo.webm)
   - **Resolution:** 1280x720 (720p HD)
   - **Captured Engine:** Headless Chromium via Playwright Browser Automation (`recordVideo` API)
-  - **Playback Support:** Native HTML5 video in all modern browsers (Chrome, Edge, Safari, Firefox) and media players (VLC, QuickTime, Windows Media Player).
 - **Interactive Presentation Deck:** [`demo.html`](../demo.html)
   - Interactive HTML5 presentation page embedding the live video player alongside synchronized high-resolution screenshots.
 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide 3: Test Matrix & Specifications</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 24px;
+    }
+    .title-pill {
+      display: inline-block;
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      border: 1px solid #a855f7;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 22px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    .slide-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #64748b;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+    }
+    th {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: left;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      border-bottom: 2px solid #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td {
+      padding: 16px 20px;
+      font-size: 15px;
+      border-bottom: 1px solid #334155;
+      vertical-align: middle;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+    tr:last-child td { border-bottom: none; }
+    .badge-tc {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 14px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #38bdf8;
+    }
+    .badge-status {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      border: 1px solid #10b981;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .badge-priority {
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .p1-color { color: #ef4444; }
+    .p2-color { color: #f59e0b; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+      color: #64748b;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <span class="title-pill">Section 03 • Test Specifications Matrix</span>
+      <h1>Automated & Manual Test Case Specifications</h1>
+      <p class="subtitle">100% Pass Rate Across Core Workflows, Concurrency Barriers & Recovery Scenarios</p>
+    </div>
+    <div class="slide-number">03 / 05</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 100px;">Test ID</th>
+        <th style="width: 140px;">Mode / Level</th>
+        <th style="width: 280px;">Scenario Description</th>
+        <th>Execution Steps & Assertions</th>
+        <th style="width: 120px;">Duration</th>
+        <th style="width: 110px;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge-tc">TC01</span></td>
+        <td><strong class="badge-priority p1-color">P1 • Automated</strong></td>
+        <td><strong>Successful Multi-Item Checkout</strong></td>
+        <td>Add P001 + P002, increase P001 qty to 2, enter "Test Customer", assert total ₹5,497.00, verify single confirmation & reference <code>ORD-2026-XXXXXX</code>.</td>
+        <td>1.2s</td>
+        <td><span class="badge-status">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><span class="badge-tc">TC02</span></td>
+        <td><strong class="badge-priority p2-color">P2 • Automated</strong></td>
+        <td><strong>Missing Field Validation & Recovery</strong></td>
+        <td>Attempt checkout with empty name; assert inline error message & <code>aria-invalid="true"</code>. Verify cart preserved; input "Jane Doe" and submit successfully.</td>
+        <td>588ms</td>
+        <td><span class="badge-status">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><span class="badge-tc">TC03</span></td>
+        <td><strong class="badge-priority p1-color">P1 • Automated</strong></td>
+        <td><strong>Quantity Controls & Exact Totals</strong></td>
+        <td>Verify unit price ₹1,499.00 -> Increase qty to 2 (₹2,998.00) -> Add P002 (₹5,497.00) -> Decrease qty back to 1 (₹3,998.00). Assert exact integer paise math.</td>
+        <td>583ms</td>
+        <td><span class="badge-status">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><span class="badge-tc">MT01</span></td>
+        <td><strong class="badge-priority p1-color">P1 • Auto/Manual</strong></td>
+        <td><strong>Empty Cart Checkout Prevention</strong></td>
+        <td>Attempt submission with 0 items; verify alert banner displayed, order confirmation blocked, Place Order button remains active.</td>
+        <td>458ms</td>
+        <td><span class="badge-status">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><span class="badge-tc">MT02</span></td>
+        <td><strong class="badge-priority p1-color">P1 • Auto/Manual</strong></td>
+        <td><strong>Rapid Double-Click Protection</strong></td>
+        <td>Dispatch 2 click events in &lt; 10ms; assert synchronous lock stops secondary event; exactly 1 confirmation & 1 reference created. Button disabled.</td>
+        <td>533ms</td>
+        <td><span class="badge-status">PASSED</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div>Test Runner: Playwright Test v1.65.1 in Chromium (Desktop Chrome)</div>
+    <div>Total Suite Execution Duration: ~5.9 Seconds • 5 of 5 Passed</div>
+  </div>
+</body>
+</html>

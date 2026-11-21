@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide 1: Architecture & Components</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 24px;
+    }
+    .title-pill {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      border: 1px solid #10b981;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 22px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    .slide-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #64748b;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .card h3 {
+      font-size: 22px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .card p {
+      font-size: 16px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .card-tag {
+      align-self: flex-start;
+      margin-top: auto;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+      color: #64748b;
+      font-size: 16px;
+    }
+    .tech-pills {
+      display: flex;
+      gap: 12px;
+    }
+    .pill {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <span class="title-pill">Section 01 • System Architecture</span>
+      <h1>Mini Checkout Application Overview</h1>
+      <p class="subtitle">Component Hierarchy, State Management & Fixed-Price Product Catalogue</p>
+    </div>
+    <div class="slide-number">01 / 05</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">1</div>
+      <h3>Product Catalogue Component</h3>
+      <p>Centrally defined in JavaScript with immutable pricing. Features <strong>Wireless Headphones (P001 @ ₹1,499.00)</strong> and <strong>Smart Watch (P002 @ ₹2,499.00)</strong>. User input tampering of pricing is strictly prevented.</p>
+      <span class="card-tag">Immutable Catalogue Engine</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">2</div>
+      <h3>Shopping Cart & Floor Bounds</h3>
+      <p>Reactive state updates on add, remove, and quantity mutations. Enforces a strict minimum quantity floor of 1, preventing negative or zero cart items.</p>
+      <span class="card-tag">Stateful Cart Management</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">3</div>
+      <h3>Financial Calculation Engine</h3>
+      <p>All line subtotals and grand totals are calculated in <strong>integer paise</strong> (149900 + 249900 paise) internally to eliminate floating-point currency drift.</p>
+      <span class="card-tag">Integer Paise Math (Zero Drift)</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">4</div>
+      <h3>Accessible Form Validation</h3>
+      <p>Customer name requires whitespace trimming before validation. Associates field errors with <code>aria-describedby</code> and <code>aria-invalid="true"</code>, preserving user input upon rejection.</p>
+      <span class="card-tag">ARIA-Compliant Validation</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">5</div>
+      <h3>Synchronous Concurrency Lock</h3>
+      <p>Immediate synchronous boolean lock flag prevents rapid double-clicks (&lt; 10ms) from creating multiple orders or duplicate reference numbers.</p>
+      <span class="card-tag">Race-Condition Immunity</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">6</div>
+      <h3>Simulated Order Confirmation</h3>
+      <p>Renders a single confirmation card containing customer name, formatted total, and a unique reference matching <code>ORD-2026-XXXXXX</code>, permanently disabling checkout controls.</p>
+      <span class="card-tag">Simulated Post-Checkout State</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="tech-pills">
+      <span class="pill">HTML5</span>
+      <span class="pill">CSS3</span>
+      <span class="pill">Vanilla JS (ES6+)</span>
+      <span class="pill">Playwright Test</span>
+      <span class="pill">Chromium</span>
+    </div>
+    <div>Mini Checkout & Browser Test Suite • QA Engineering Walkthrough</div>
+  </div>
+</body>
+</html>
